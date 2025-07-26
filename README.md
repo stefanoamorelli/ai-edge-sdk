@@ -1,23 +1,25 @@
 # AI Edge SDK for Flutter
 
-Flutter plugin for Google's AI Edge SDK - brings Gemini Nano on-device AI to your Flutter apps.
+Flutter plugin for [Google's AI Edge SDK](https://developer.android.com/ai/gemini-nano/ai-edge-sdk) - brings [Gemini Nano](https://developer.android.com/ai/gemini-nano) on-device AI to your Flutter apps.
 
 [![Tests](https://img.shields.io/badge/tests-52%20passing-brightgreen)](test/)
 [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](coverage/)
 [![Platform](https://img.shields.io/badge/platform-Android%20only-orange)](android/)
 
-## ![IMPORTANT](https://img.shields.io/badge/IMPORTANT-red?style=for-the-badge) Limitations
+[Gemini Nano](https://developer.android.com/ai/gemini-nano) brings Google's most efficient AI model directly to your device, enabling private, fast AI inference without internet connectivity. On-device AI represents the future of mobile computing, providing instant responses while keeping your data completely private.
 
-- **Pixel 9 series ONLY** - Will not work on any other device
-- **No emulator support** - Requires physical Pixel 9 hardware
-- **Experimental** - Not ready for production use
-- **Android only** - No iOS support
+> [!IMPORTANT]
+> This is an experimental open-source project. The underlying [Google AI Edge SDK](https://developer.android.com/ai/gemini-nano/experimental) is in beta and APIs may change. Use at your own risk.
 
 ## Requirements
 
-- Physical Pixel 9, Pixel 9 Pro, Pixel 9 Pro XL, or Pixel 9 Pro Fold
-- Android with AICore system module installed
-- Flutter 3.0.0+
+- Physical [Pixel 9 series](https://store.google.com/category/phones) device (Pixel 9, Pixel 9 Pro, Pixel 9 Pro XL, or Pixel 9 Pro Fold)
+- Android with [AICore system module](https://developer.android.com/ai/aicore) installed
+- [Flutter](https://flutter.dev) 3.0.0+
+
+### Why So Restrictive?
+
+[Gemini Nano](https://developer.android.com/ai/gemini-nano) requires specialized [NPU hardware](https://developer.android.com/ai/gemini-nano/experimental#device-requirements) only available in [Pixel 9 devices](https://support.google.com/pixelphone/answer/7158570). This case is part of [Google's experimental AI program](https://developer.android.com/ai/gemini-nano/experimental) - broader device support may come later.
 
 ## Installation
 
@@ -44,24 +46,27 @@ if (await sdk.isSupported()) {
 }
 ```
 
+## Features
+
+- **Device validation** - Automatic Pixel 9 series detection
+- **Content generation** - Text completion and creative writing
+- **Streaming responses** - Real-time token generation
+- **Error handling** - Comprehensive exception management
+- **Privacy-first** - All processing happens on-device
+
 ## Testing
 
-**Cannot test with emulator.** You need a physical Pixel 9.
+**Cannot test with emulator.** You need a physical [Pixel 9](https://developer.android.com/ai/gemini-nano/experimental#device-requirements).
 
 Run unit tests:
 ```bash
 flutter test --coverage
 ```
 
-**Test Results:**
-- ✅ 52 tests passing
-- ✅ 100% code coverage
-- ✅ All device validation scenarios
-- ✅ Error handling & exceptions
 
 ## Example App
 
-The `/example` folder contains a complete demo app that shows device compatibility checking and error handling.
+The `/example` folder contains a complete demo app that shows [device compatibility checking](https://developer.android.com/ai/gemini-nano/experimental#device-requirements) and error handling.
 
 ```bash
 cd example
@@ -69,13 +74,18 @@ flutter run
 # Shows device info and compatibility status
 ```
 
-## Why So Restrictive?
-
-Gemini Nano requires specialized NPU hardware only available in Pixel 9 devices. This is Google's experimental AI program - broader device support may come later.
 
 ## Contributing
 
 See [SECURITY.md](SECURITY.md) for security practices and reporting vulnerabilities.
+
+## References
+
+- [Google AI Edge SDK Documentation](https://developer.android.com/ai/gemini-nano/ai-edge-sdk)
+- [Gemini Nano Experimental Access](https://developer.android.com/ai/gemini-nano/experimental)
+- [Android AI Samples - Gemini Nano](https://github.com/android/ai-samples/tree/main/gemini-nano)
+- [Flutter Plugin Development Guide](https://docs.flutter.dev/packages-and-plugins/developing-packages)
+- [Android AICore Documentation](https://developer.android.com/ai/aicore)
 
 ## License
 
