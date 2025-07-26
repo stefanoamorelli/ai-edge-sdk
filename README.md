@@ -6,7 +6,7 @@ Flutter plugin for Google's AI Edge SDK - brings Gemini Nano on-device AI to you
 [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](coverage/)
 [![Platform](https://img.shields.io/badge/platform-Android%20only-orange)](android/)
 
-## ⚠️ Important Limitations
+## ![IMPORTANT](https://img.shields.io/badge/IMPORTANT-red?style=for-the-badge) Limitations
 
 - **Pixel 9 series ONLY** - Will not work on any other device
 - **No emulator support** - Requires physical Pixel 9 hardware
@@ -73,14 +73,10 @@ flutter run
 
 Gemini Nano requires specialized NPU hardware only available in Pixel 9 devices. This is Google's experimental AI program - broader device support may come later.
 
-## Author
-
-Created by [Stefano Amorelli](mailto:stefano@amorelli.tech)
-
 ## Contributing
 
 See [SECURITY.md](SECURITY.md) for security practices and reporting vulnerabilities.
 
 ## License
 
-MIT - see [LICENSE.md](LICENSE.md)
+MIT - Copyright Stefano Amorelli 2025 - see [LICENSE.md](LICENSE.md)
