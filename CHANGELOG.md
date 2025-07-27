@@ -1,3 +1,4 @@
-## 0.0.1
+## 1.0.0
 
-* TODO: Describe initial release.
+* Initial release of AI Edge SDK Flutter plugin
+* Support for AI Edge integration with Flutter applications
