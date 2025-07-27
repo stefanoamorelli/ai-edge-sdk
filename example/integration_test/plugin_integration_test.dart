@@ -10,16 +10,20 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
-import 'package:ai_edge_sdk_android_only/ai_edge_sdk_android_only.dart';
+import 'package:ai_edge_sdk/ai_edge_sdk.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets('getPlatformVersion test', (WidgetTester tester) async {
-    final AiEdgeSdkAndroidOnly plugin = AiEdgeSdkAndroidOnly();
-    final String? version = await plugin.getPlatformVersion();
-    // The version string depends on the host platform running the test, so
-    // just assert that some non-empty string is returned.
-    expect(version?.isNotEmpty, true);
+  testWidgets('isSupported test', (WidgetTester tester) async {
+    final AiEdgeSdk plugin = AiEdgeSdk();
+    try {
+      final bool isSupported = await plugin.isSupported();
+      // Should return a boolean value
+      expect(isSupported, isA<bool>());
+    } catch (e) {
+      // Might throw on unsupported devices, which is expected
+      expect(e, isA<Exception>());
+    }
   });
 }

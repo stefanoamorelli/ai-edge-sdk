@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:flutter/services.dart';
 import 'package:ai_edge_sdk/ai_edge_sdk.dart';
 
 void main() {

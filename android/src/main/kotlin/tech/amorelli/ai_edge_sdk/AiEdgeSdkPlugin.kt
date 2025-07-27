@@ -1,4 +1,4 @@
-package com.example.ai_edge_sdk
+package tech.amorelli.ai_edge_sdk
 
 import android.content.Context
 import io.flutter.embedding.engine.plugins.FlutterPlugin

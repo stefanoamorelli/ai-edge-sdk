@@ -1,4 +1,4 @@
-package com.example.ai_edge_sdk_android_only_example
+package tech.amorelli.ai_edge_sdk_example
 
 import io.flutter.embedding.android.FlutterActivity
 
