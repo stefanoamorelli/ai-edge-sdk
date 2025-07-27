@@ -89,4 +89,4 @@ See [SECURITY.md](SECURITY.md) for security practices and reporting vulnerabilit
 
 ## License
 
-MIT - Copyright Stefano Amorelli 2025 - see [LICENSE.md](LICENSE.md)
+MIT - Copyright [Stefano Amorelli](https://amorelli.tech/) 2025 - see [LICENSE.md](LICENSE.md)
