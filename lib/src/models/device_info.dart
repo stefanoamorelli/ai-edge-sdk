@@ -1,3 +1,4 @@
+/// Device information and compatibility details for Gemini Nano.
 class DeviceInfo {
   final String manufacturer;
   final String model;

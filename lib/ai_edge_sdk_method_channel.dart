@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'ai_edge_sdk_platform_interface.dart';
 import 'src/exceptions/ai_edge_exceptions.dart';
 
+/// MethodChannel-based implementation of [AiEdgeSdkPlatform].
 class MethodChannelAiEdgeSdk extends AiEdgeSdkPlatform {
   @visibleForTesting
   final methodChannel = const MethodChannel('ai_edge_sdk');

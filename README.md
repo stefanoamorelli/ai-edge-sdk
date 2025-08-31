@@ -25,7 +25,7 @@ Flutter plugin for [Google's AI Edge SDK](https://developer.android.com/ai/gemin
 
 ```yaml
 dependencies:
-  ai_edge_sdk: ^1.0.0
+  ai_edge_sdk: ^1.0.1
 ```
 
 ## Quick Start
@@ -89,4 +89,4 @@ See [SECURITY.md](SECURITY.md) for security practices and reporting vulnerabilit
 
 ## License
 
-MIT - Copyright [Stefano Amorelli](https://amorelli.tech/) 2025 - see [LICENSE.md](LICENSE.md)
+MIT - Copyright [Stefano Amorelli](https://amorelli.tech/) 2025 - see [LICENSE](LICENSE)

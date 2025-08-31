@@ -1,9 +1,10 @@
 name: ai_edge_sdk
 description: Flutter plugin for Google's AI Edge SDK, enabling on-device generative AI with Gemini Nano on Android devices.
-version: 1.0.0
-repository: https://github.com/stefanoamorelli/ai_edge_sdk
-issue_tracker: https://github.com/stefanoamorelli/ai_edge_sdk/issues
-documentation: https://github.com/stefanoamorelli/ai_edge_sdk#readme
+version: 1.0.1
+homepage: https://github.com/stefanoamorelli/ai-edge-sdk
+repository: https://github.com/stefanoamorelli/ai-edge-sdk
+issue_tracker: https://github.com/stefanoamorelli/ai-edge-sdk/issues
+documentation: https://github.com/stefanoamorelli/ai-edge-sdk#readme
 
 environment:
   sdk: ^3.0.0

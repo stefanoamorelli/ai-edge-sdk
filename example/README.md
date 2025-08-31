@@ -1,6 +1,6 @@
-# ai_edge_sdk_android_only_example
+# ai_edge_sdk example
 
-Demonstrates how to use the ai_edge_sdk_android_only plugin.
+Demonstrates how to use the `ai_edge_sdk` Flutter plugin.
 
 ## Getting Started
 

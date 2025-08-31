@@ -1,3 +1,4 @@
+/// Result of a generation request.
 class GenerationResult {
   final String content;
   final String? finishReason;

@@ -1,3 +1,21 @@
+/// AI Edge SDK Flutter plugin
+///
+/// This is the main entry point for interacting with Google's AI Edge SDK
+/// from Flutter. It provides simple, high-level APIs to:
+/// - Initialize Gemini Nano on supported devices
+/// - Generate content (optionally with streamed chunks)
+/// - Inspect device compatibility and AICore availability
+///
+/// Example:
+///
+/// ```dart
+/// final sdk = AiEdgeSdk();
+/// if (await sdk.isSupported()) {
+///   await sdk.initialize();
+///   final result = await sdk.generateContent('Hello AI');
+///   print(result.content);
+/// }
+/// ```
 import 'dart:async';
 import 'ai_edge_sdk_platform_interface.dart';
 import 'src/models/generation_result.dart';
@@ -9,6 +27,11 @@ export 'src/models/generation_result.dart';
 export 'src/models/device_info.dart';
 export 'src/exceptions/ai_edge_exceptions.dart';
 
+/// High-level client for the AI Edge SDK.
+///
+/// Use this class to check device support, initialize the on-device model,
+/// and perform content generation. Instances are singletons to ensure
+/// consistent lifecycle management.
 class AiEdgeSdk {
   static final AiEdgeSdk _instance = AiEdgeSdk._internal();
   factory AiEdgeSdk() => _instance;
@@ -44,6 +67,7 @@ class AiEdgeSdk {
     }
   }
 
+  /// Generate a single response for the provided [prompt].
   Future<GenerationResult> generateContent(String prompt) async {
     _ensureInitialized();
     
@@ -51,6 +75,7 @@ class AiEdgeSdk {
     return GenerationResult.fromMap(result);
   }
 
+  /// Generate a response for [prompt] while optionally streaming token chunks.
   Future<GenerationResult> generateContentStream(
     String prompt, {
     void Function(String chunk)? onChunk,
@@ -79,6 +104,7 @@ class AiEdgeSdk {
   }
 
   /// Get detailed device information and compatibility status
+  /// Returns detailed [DeviceInfo] and compatibility status.
   Future<DeviceInfo> getDeviceInfo() async {
     final result = await AiEdgeSdkPlatform.instance.isSupported();
     return DeviceInfo.fromMap(result['deviceInfo'] as Map<String, dynamic>);
@@ -96,6 +122,7 @@ class AiEdgeSdk {
     return deviceInfo.isAiCoreAvailable;
   }
 
+  /// Dispose any native resources and reset initialization state.
   Future<void> dispose() async {
     await AiEdgeSdkPlatform.instance.dispose();
     _isInitialized = false;
