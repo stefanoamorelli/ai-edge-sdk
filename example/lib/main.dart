@@ -30,13 +30,14 @@ class _MyAppState extends State<MyApp> {
     try {
       final deviceInfo = await _aiEdgeSdk.getDeviceInfo();
       final isSupported = await _aiEdgeSdk.isSupported();
-      
-      platformVersion = 'Device: ${deviceInfo.manufacturer} ${deviceInfo.model}\n'
-                       'Android: ${deviceInfo.androidVersion}\n'
-                       'Pixel 9 Series: ${deviceInfo.isPixel9Series}\n'
-                       'AICore Available: ${deviceInfo.isAiCoreAvailable}\n'
-                       'Supported: $isSupported\n'
-                       'Status: ${deviceInfo.compatibilityStatus}';
+
+      platformVersion =
+          'Device: ${deviceInfo.manufacturer} ${deviceInfo.model}\n'
+          'Android: ${deviceInfo.androidVersion}\n'
+          'Pixel 9 Series: ${deviceInfo.isPixel9Series}\n'
+          'AICore Available: ${deviceInfo.isAiCoreAvailable}\n'
+          'Supported: $isSupported\n'
+          'Status: ${deviceInfo.compatibilityStatus}';
     } on Exception catch (e) {
       platformVersion = 'Error: $e';
     }

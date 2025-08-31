@@ -8,7 +8,6 @@ import 'package:flutter/services.dart';
 class MockAiEdgeSdkPlatform
     with MockPlatformInterfaceMixin
     implements AiEdgeSdkPlatform {
-
   final Map<String, dynamic> _mockResponses = {};
   final List<String> _methodCalls = [];
 
@@ -39,9 +38,11 @@ class MockAiEdgeSdkPlatform
     if (response is PlatformException) {
       // Convert to proper exception types
       if (response.code == 'UNSUPPORTED_DEVICE') {
-        throw UnsupportedDeviceException(response.message ?? '', code: response.code);
+        throw UnsupportedDeviceException(response.message ?? '',
+            code: response.code);
       } else if (response.code == 'AICORE_UNAVAILABLE') {
-        throw AiCoreUnavailableException(response.message ?? '', code: response.code);
+        throw AiCoreUnavailableException(response.message ?? '',
+            code: response.code);
       } else {
         throw InitializationException(response.message ?? '');
       }
@@ -56,11 +57,12 @@ class MockAiEdgeSdkPlatform
     if (response is PlatformException) {
       throw response;
     }
-    return response ?? {
-      'success': true,
-      'content': 'Mock generated content for: $prompt',
-      'finishReason': 'STOP'
-    };
+    return response ??
+        {
+          'success': true,
+          'content': 'Mock generated content for: $prompt',
+          'finishReason': 'STOP'
+        };
   }
 
   @override
@@ -70,11 +72,12 @@ class MockAiEdgeSdkPlatform
     if (response is PlatformException) {
       throw response;
     }
-    return response ?? {
-      'success': true,
-      'content': 'Mock stream content',
-      'chunks': ['Mock ', 'stream ', 'content']
-    };
+    return response ??
+        {
+          'success': true,
+          'content': 'Mock stream content',
+          'chunks': ['Mock ', 'stream ', 'content']
+        };
   }
 
   @override
@@ -84,17 +87,18 @@ class MockAiEdgeSdkPlatform
     if (response is PlatformException) {
       throw response;
     }
-    return response ?? {
-      'isSupported': true,
-      'deviceInfo': {
-        'manufacturer': 'Google',
-        'model': 'Pixel 9',
-        'androidVersion': '14',
-        'sdkVersion': 34,
-        'isPixel9Series': true,
-        'isAiCoreAvailable': true,
-      }
-    };
+    return response ??
+        {
+          'isSupported': true,
+          'deviceInfo': {
+            'manufacturer': 'Google',
+            'model': 'Pixel 9',
+            'androidVersion': '14',
+            'sdkVersion': 34,
+            'isPixel9Series': true,
+            'isAiCoreAvailable': true,
+          }
+        };
   }
 
   @override
@@ -132,10 +136,8 @@ void main() {
 
     group('initialization', () {
       test('should initialize successfully with default parameters', () async {
-        mockPlatform.setMockResponse('initialize', {
-          'success': true,
-          'message': 'Model initialized successfully'
-        });
+        mockPlatform.setMockResponse('initialize',
+            {'success': true, 'message': 'Model initialized successfully'});
 
         final result = await aiEdgeSdk.initialize();
 
@@ -144,10 +146,8 @@ void main() {
       });
 
       test('should initialize with custom parameters', () async {
-        mockPlatform.setMockResponse('initialize', {
-          'success': true,
-          'message': 'Model initialized successfully'
-        });
+        mockPlatform.setMockResponse('initialize',
+            {'success': true, 'message': 'Model initialized successfully'});
 
         final result = await aiEdgeSdk.initialize(
           modelName: 'custom-model',
@@ -160,13 +160,15 @@ void main() {
         expect(result, isTrue);
       });
 
-      test('should throw UnsupportedDeviceException for non-Pixel 9 devices', () async {
-        mockPlatform.setMockError('initialize', 
-          PlatformException(
-            code: 'UNSUPPORTED_DEVICE',
-            message: 'Gemini Nano is only available on Pixel 9 series devices',
-          )
-        );
+      test('should throw UnsupportedDeviceException for non-Pixel 9 devices',
+          () async {
+        mockPlatform.setMockError(
+            'initialize',
+            PlatformException(
+              code: 'UNSUPPORTED_DEVICE',
+              message:
+                  'Gemini Nano is only available on Pixel 9 series devices',
+            ));
 
         expect(
           () => aiEdgeSdk.initialize(),
@@ -174,13 +176,14 @@ void main() {
         );
       });
 
-      test('should throw AiCoreUnavailableException when AICore is missing', () async {
-        mockPlatform.setMockError('initialize',
-          PlatformException(
-            code: 'AICORE_UNAVAILABLE',
-            message: 'AICore is not available on this device',
-          )
-        );
+      test('should throw AiCoreUnavailableException when AICore is missing',
+          () async {
+        mockPlatform.setMockError(
+            'initialize',
+            PlatformException(
+              code: 'AICORE_UNAVAILABLE',
+              message: 'AICore is not available on this device',
+            ));
 
         expect(
           () => aiEdgeSdk.initialize(),
@@ -189,12 +192,12 @@ void main() {
       });
 
       test('should throw InitializationException for other errors', () async {
-        mockPlatform.setMockError('initialize',
-          PlatformException(
-            code: 'UNKNOWN_ERROR',
-            message: 'Something went wrong',
-          )
-        );
+        mockPlatform.setMockError(
+            'initialize',
+            PlatformException(
+              code: 'UNKNOWN_ERROR',
+              message: 'Something went wrong',
+            ));
 
         expect(
           () => aiEdgeSdk.initialize(),
@@ -205,10 +208,8 @@ void main() {
 
     group('content generation', () {
       setUp(() async {
-        mockPlatform.setMockResponse('initialize', {
-          'success': true,
-          'message': 'Model initialized successfully'
-        });
+        mockPlatform.setMockResponse('initialize',
+            {'success': true, 'message': 'Model initialized successfully'});
         await aiEdgeSdk.initialize();
       });
 
@@ -241,7 +242,7 @@ void main() {
       test('should generate content stream successfully', () async {
         const prompt = 'Stream test';
         final chunks = <String>[];
-        
+
         mockPlatform.setMockResponse('generateContentStream', {
           'success': true,
           'content': 'Full stream content',
@@ -308,7 +309,7 @@ void main() {
         });
 
         final deviceInfo = await aiEdgeSdk.getDeviceInfo();
-        
+
         expect(deviceInfo.manufacturer, equals('Google'));
         expect(deviceInfo.model, equals('Pixel 9 Pro XL'));
         expect(deviceInfo.androidVersion, equals('15'));
@@ -360,11 +361,9 @@ void main() {
       });
 
       test('should reset initialization state after dispose', () async {
-        mockPlatform.setMockResponse('initialize', {
-          'success': true,
-          'message': 'Model initialized successfully'
-        });
-        
+        mockPlatform.setMockResponse('initialize',
+            {'success': true, 'message': 'Model initialized successfully'});
+
         await aiEdgeSdk.initialize();
         await aiEdgeSdk.dispose();
 
@@ -418,7 +417,8 @@ void main() {
         isPixel9Series: true,
         isAiCoreAvailable: true,
       );
-      expect(supported.compatibilityStatus, equals('Device fully supports Gemini Nano'));
+      expect(supported.compatibilityStatus,
+          equals('Device fully supports Gemini Nano'));
 
       // Not Pixel 9
       final notPixel9 = DeviceInfo(
@@ -429,7 +429,8 @@ void main() {
         isPixel9Series: false,
         isAiCoreAvailable: true,
       );
-      expect(notPixel9.compatibilityStatus, equals('Requires Pixel 9 series device'));
+      expect(notPixel9.compatibilityStatus,
+          equals('Requires Pixel 9 series device'));
 
       // No AICore
       final noAiCore = DeviceInfo(
@@ -440,7 +441,8 @@ void main() {
         isPixel9Series: true,
         isAiCoreAvailable: false,
       );
-      expect(noAiCore.compatibilityStatus, equals('AICore not available - please install system updates'));
+      expect(noAiCore.compatibilityStatus,
+          equals('AICore not available - please install system updates'));
     });
   });
 
@@ -473,7 +475,7 @@ void main() {
 
   group('MethodChannelAiEdgeSdk', () {
     late MethodChannelAiEdgeSdk methodChannel;
-    
+
     setUp(() {
       methodChannel = MethodChannelAiEdgeSdk();
     });
@@ -481,8 +483,9 @@ void main() {
     test('should be the default platform instance', () {
       // Reset to default instance for this test
       AiEdgeSdkPlatform.instance = MethodChannelAiEdgeSdk();
-      expect(AiEdgeSdkPlatform.instance, isInstanceOf<MethodChannelAiEdgeSdk>());
-      // Restore mock for other tests  
+      expect(
+          AiEdgeSdkPlatform.instance, isInstanceOf<MethodChannelAiEdgeSdk>());
+      // Restore mock for other tests
       // Note: mockPlatform is defined in the outer scope
     });
   });

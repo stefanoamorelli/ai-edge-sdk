@@ -16,7 +16,8 @@ void main() {
 
         expect(deviceInfo.isPixel9Series, isTrue);
         expect(deviceInfo.isFullySupported, isTrue);
-        expect(deviceInfo.compatibilityStatus, equals('Device fully supports Gemini Nano'));
+        expect(deviceInfo.compatibilityStatus,
+            equals('Device fully supports Gemini Nano'));
       });
 
       test('should identify Pixel 9 Pro as supported', () {
@@ -75,7 +76,8 @@ void main() {
 
         expect(deviceInfo.isPixel9Series, isFalse);
         expect(deviceInfo.isFullySupported, isFalse);
-        expect(deviceInfo.compatibilityStatus, equals('Requires Pixel 9 series device'));
+        expect(deviceInfo.compatibilityStatus,
+            equals('Requires Pixel 9 series device'));
       });
 
       test('should reject Pixel 7 devices', () {
@@ -104,7 +106,8 @@ void main() {
 
         expect(deviceInfo.isPixel9Series, isFalse);
         expect(deviceInfo.isFullySupported, isFalse);
-        expect(deviceInfo.compatibilityStatus, equals('Requires Pixel 9 series device'));
+        expect(deviceInfo.compatibilityStatus,
+            equals('Requires Pixel 9 series device'));
       });
 
       test('should reject OnePlus devices', () {
@@ -150,8 +153,8 @@ void main() {
         expect(deviceInfo.isPixel9Series, isTrue);
         expect(deviceInfo.isAiCoreAvailable, isFalse);
         expect(deviceInfo.isFullySupported, isFalse);
-        expect(deviceInfo.compatibilityStatus, 
-               equals('AICore not available - please install system updates'));
+        expect(deviceInfo.compatibilityStatus,
+            equals('AICore not available - please install system updates'));
       });
 
       test('should support Pixel 9 with AICore available', () {
@@ -167,7 +170,8 @@ void main() {
         expect(deviceInfo.isPixel9Series, isTrue);
         expect(deviceInfo.isAiCoreAvailable, isTrue);
         expect(deviceInfo.isFullySupported, isTrue);
-        expect(deviceInfo.compatibilityStatus, equals('Device fully supports Gemini Nano'));
+        expect(deviceInfo.compatibilityStatus,
+            equals('Device fully supports Gemini Nano'));
       });
     });
 
@@ -184,7 +188,8 @@ void main() {
 
         expect(deviceInfo.isPixel9Series, isFalse);
         expect(deviceInfo.isFullySupported, isFalse);
-        expect(deviceInfo.compatibilityStatus, equals('Requires Pixel 9 series device'));
+        expect(deviceInfo.compatibilityStatus,
+            equals('Requires Pixel 9 series device'));
       });
 
       test('should handle case sensitivity in model names', () {
@@ -194,7 +199,8 @@ void main() {
           model: 'pixel 9 pro', // lowercase
           androidVersion: '14',
           sdkVersion: 34,
-          isPixel9Series: true, // Android native would handle case-insensitive check
+          isPixel9Series:
+              true, // Android native would handle case-insensitive check
           isAiCoreAvailable: true,
         );
 

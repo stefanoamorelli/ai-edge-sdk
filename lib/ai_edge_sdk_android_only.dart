@@ -1,4 +1,3 @@
-
 import 'ai_edge_sdk_android_only_platform_interface.dart';
 
 class AiEdgeSdkAndroidOnly {

@@ -57,7 +57,7 @@ class DeviceInfo {
   @override
   String toString() {
     return 'DeviceInfo(manufacturer: $manufacturer, model: $model, '
-           'androidVersion: $androidVersion, sdkVersion: $sdkVersion, '
-           'isPixel9Series: $isPixel9Series, isAiCoreAvailable: $isAiCoreAvailable)';
+        'androidVersion: $androidVersion, sdkVersion: $sdkVersion, '
+        'isPixel9Series: $isPixel9Series, isAiCoreAvailable: $isAiCoreAvailable)';
   }
 }

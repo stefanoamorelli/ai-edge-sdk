@@ -38,7 +38,8 @@ abstract class AiEdgeSdkPlatform extends PlatformInterface {
 
   /// Generate a response for the given [prompt] with streamed chunks.
   Future<Map<String, dynamic>> generateContentStream(String prompt) {
-    throw UnimplementedError('generateContentStream() has not been implemented.');
+    throw UnimplementedError(
+        'generateContentStream() has not been implemented.');
   }
 
   /// Return device support metadata and compatibility information.

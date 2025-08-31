@@ -17,9 +17,7 @@ class GenerationResult {
       content: map['content'] ?? '',
       finishReason: map['finishReason'],
       success: map['success'] ?? false,
-      chunks: map['chunks'] != null
-          ? List<String>.from(map['chunks'])
-          : null,
+      chunks: map['chunks'] != null ? List<String>.from(map['chunks']) : null,
     );
   }
 

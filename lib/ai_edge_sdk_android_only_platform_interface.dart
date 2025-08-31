@@ -8,7 +8,8 @@ abstract class AiEdgeSdkAndroidOnlyPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static AiEdgeSdkAndroidOnlyPlatform _instance = MethodChannelAiEdgeSdkAndroidOnly();
+  static AiEdgeSdkAndroidOnlyPlatform _instance =
+      MethodChannelAiEdgeSdkAndroidOnly();
 
   /// The default instance of [AiEdgeSdkAndroidOnlyPlatform] to use.
   ///

@@ -40,7 +40,7 @@ class AiEdgeSdk {
   bool _isInitialized = false;
 
   /// Initialize the Gemini Nano model
-  /// 
+  ///
   /// This method enforces Pixel 9 series device requirement and throws
   /// [UnsupportedDeviceException] if called on non-Pixel 9 devices.
   /// Also throws [AiCoreUnavailableException] if AICore is not available.
@@ -70,7 +70,7 @@ class AiEdgeSdk {
   /// Generate a single response for the provided [prompt].
   Future<GenerationResult> generateContent(String prompt) async {
     _ensureInitialized();
-    
+
     final result = await AiEdgeSdkPlatform.instance.generateContent(prompt);
     return GenerationResult.fromMap(result);
   }
@@ -81,20 +81,21 @@ class AiEdgeSdk {
     void Function(String chunk)? onChunk,
   }) async {
     _ensureInitialized();
-    
-    final result = await AiEdgeSdkPlatform.instance.generateContentStream(prompt);
-    
+
+    final result =
+        await AiEdgeSdkPlatform.instance.generateContentStream(prompt);
+
     if (onChunk != null && result['chunks'] != null) {
       for (final chunk in result['chunks'] as List) {
         onChunk(chunk.toString());
       }
     }
-    
+
     return GenerationResult.fromMap(result);
   }
 
   /// Check if the current device supports Gemini Nano
-  /// 
+  ///
   /// Returns true only if:
   /// 1. Device is Pixel 9 series
   /// 2. AICore is available
@@ -135,12 +136,4 @@ class AiEdgeSdk {
       );
     }
   }
-}
-
-class InitializationException implements Exception {
-  final String message;
-  InitializationException(this.message);
-  
-  @override
-  String toString() => 'InitializationException: $message';
 }

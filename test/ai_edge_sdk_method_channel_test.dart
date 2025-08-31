@@ -13,11 +13,11 @@ void main() {
     setUp(() {
       platform = MethodChannelAiEdgeSdk();
       methodCalls = <MethodCall>[];
-      
+
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
           .setMockMethodCallHandler(platform.methodChannel, (call) async {
         methodCalls.add(call);
-        
+
         switch (call.method) {
           case 'initialize':
             return {
@@ -77,17 +77,20 @@ void main() {
 
         expect(methodCalls, hasLength(1));
         expect(methodCalls.first.method, equals('initialize'));
-        expect(methodCalls.first.arguments, equals({
-          'modelName': 'gemini-nano',
-          'temperature': 0.8,
-          'topK': 40,
-          'topP': 0.95,
-          'maxOutputTokens': 1024,
-        }));
+        expect(
+            methodCalls.first.arguments,
+            equals({
+              'modelName': 'gemini-nano',
+              'temperature': 0.8,
+              'topK': 40,
+              'topP': 0.95,
+              'maxOutputTokens': 1024,
+            }));
         expect(result['success'], isTrue);
       });
 
-      test('should throw UnsupportedDeviceException for unsupported device', () async {
+      test('should throw UnsupportedDeviceException for unsupported device',
+          () async {
         TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
             .setMockMethodCallHandler(platform.methodChannel, (call) async {
           throw PlatformException(
@@ -106,12 +109,14 @@ void main() {
             maxOutputTokens: 1024,
           ),
           throwsA(isA<UnsupportedDeviceException>()
-              .having((e) => e.message, 'message', contains('Device not supported'))
+              .having(
+                  (e) => e.message, 'message', contains('Device not supported'))
               .having((e) => e.code, 'code', equals('UNSUPPORTED_DEVICE'))),
         );
       });
 
-      test('should throw AiCoreUnavailableException when AICore missing', () async {
+      test('should throw AiCoreUnavailableException when AICore missing',
+          () async {
         TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
             .setMockMethodCallHandler(platform.methodChannel, (call) async {
           throw PlatformException(
@@ -129,7 +134,8 @@ void main() {
             maxOutputTokens: 1024,
           ),
           throwsA(isA<AiCoreUnavailableException>()
-              .having((e) => e.message, 'message', contains('AICore not available'))
+              .having(
+                  (e) => e.message, 'message', contains('AICore not available'))
               .having((e) => e.code, 'code', equals('AICORE_UNAVAILABLE'))),
         );
       });
@@ -169,7 +175,8 @@ void main() {
         expect(result['content'], contains(prompt));
       });
 
-      test('should throw InitializationException when not initialized', () async {
+      test('should throw InitializationException when not initialized',
+          () async {
         TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
             .setMockMethodCallHandler(platform.methodChannel, (call) async {
           throw PlatformException(
@@ -180,8 +187,8 @@ void main() {
 
         expect(
           () => platform.generateContent('test'),
-          throwsA(isA<InitializationException>()
-              .having((e) => e.message, 'message', contains('Model not initialized'))),
+          throwsA(isA<InitializationException>().having(
+              (e) => e.message, 'message', contains('Model not initialized'))),
         );
       });
 
@@ -243,7 +250,8 @@ void main() {
         expect(result['deviceInfo']['isPixel9Series'], isTrue);
       });
 
-      test('should throw UnsupportedDeviceException for support check errors', () async {
+      test('should throw UnsupportedDeviceException for support check errors',
+          () async {
         TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
             .setMockMethodCallHandler(platform.methodChannel, (call) async {
           throw PlatformException(

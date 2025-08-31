@@ -7,7 +7,8 @@ abstract class AiEdgeException implements Exception {
   AiEdgeException(this.message, {this.code, this.details});
 
   @override
-  String toString() => '$runtimeType: $message${code != null ? ' (Code: $code)' : ''}';
+  String toString() =>
+      '$runtimeType: $message${code != null ? ' (Code: $code)' : ''}';
 }
 
 /// Thrown when the SDK is not initialized or fails to initialize.

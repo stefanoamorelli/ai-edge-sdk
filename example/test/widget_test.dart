@@ -18,9 +18,10 @@ void main() {
     // Verify that device support check is displayed.
     expect(
       find.byWidgetPredicate(
-        (Widget widget) => widget is Text &&
-                           (widget.data!.contains('Device Support:') ||
-                            widget.data!.contains('Unknown')),
+        (Widget widget) =>
+            widget is Text &&
+            (widget.data!.contains('Device Support:') ||
+                widget.data!.contains('Unknown')),
       ),
       findsOneWidget,
     );
