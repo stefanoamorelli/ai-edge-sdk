@@ -25,7 +25,7 @@ Flutter plugin for [Google's AI Edge SDK](https://developer.android.com/ai/gemin
 
 ```yaml
 dependencies:
-  ai_edge_sdk: ^1.0.1
+  ai_edge_sdk: ^1.0.2
 ```
 
 ## Quick Start
